@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест по общежитиям СПбГЭУ</title>
+    <style>
+        body {
+            background-image: url('1-3.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #ECE9E4;
+            color: #952926;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header-container {
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+        .header h2 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .timer-container {
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .timer {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .question {
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .question h3 {
+            margin-top: 0;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .option input[type="radio"],
+        .option input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .option label {
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            flex-grow: 1;
+        }
+        .option label:hover {
+            background-color: #952926;
+            color: #ECE9E4;
+        }
+        .submit-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: #952926;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #7a1f1c;
+        }
+        .home-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: #952926;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .home-btn:hover {
+            background-color: #7a1f1c;
+        }
+        .checkbox-question .options {
+            column-count: 1;
+        }
+        .results {
+            display: none;
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .wrong-answer {
+            color: #d32f2f;
+            margin-bottom: 15px;
+        }
+        .correct-answer {
+            color: #388e3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="header">
+            <h1>Тест по общежитиям СПбГЭУ</h1>
+        </div>
+    </div>
+    
+    <div class="timer-container">
+        <div class="timer" id="timer">00:00</div>
+    </div>
+    
+    <form id="quiz-form">
+        <!-- Вопрос 1 -->
+        <div class="question">
+            <h3>1. Где находится блочное общежитие СПбГЭУ рядом с метро «Ладожская»?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q1" id="q1a" value="a">
+                    <label for="q1a">Воронежская ул., д. 38</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" id="q1b" value="b">
+                    <label for="q1b">Чкаловский пр., д. 27</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" id="q1c" value="c">
+                    <label for="q1c">Пр. Косыгина, д. 19/2</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" id="q1d" value="d">
+                    <label for="q1d">Новоизмайловский пр., д. 16</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 2 -->
+        <div class="question">
+            <h3>2. Какое общежитие является арендуемым и находится рядом с метро «Парк Победы»?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q2" id="q2a" value="a">
+                    <label for="q2a">Воронежская ул., д. 69</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" id="q2b" value="b">
+                    <label for="q2b">Чкаловский пр., д. 27</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" id="q2c" value="c">
+                    <label for="q2c">Новоизмайловский пр., д. 16</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" id="q2d" value="d">
+                    <label for="q2d">Пр. Косыгина, д. 19/2</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 3 -->
+        <div class="question">
+            <h3>3. Кто заселяется в общежития СПбГЭУ в первую очередь?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q3" id="q3a" value="a">
+                    <label for="q3a">Студенты с высокими баллами ЕГЭ</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" id="q3b" value="b">
+                    <label for="q3b">Только контрактники</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" id="q3c" value="c">
+                    <label for="q3c">Только бюджетники</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" id="q3d" value="d">
+                    <label for="q3d">Студенты из Санкт-Петербурга</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 4 -->
+        <div class="question">
+            <h3>4. На какой срок производится первоначальная оплата проживания в общежитии?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q4" id="q4a" value="a">
+                    <label for="q4a">За месяц</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" id="q4b" value="b">
+                    <label for="q4b">За год</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" id="q4c" value="c">
+                    <label for="q4c">За семестр</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" id="q4d" value="d">
+                    <label for="q4d">За неделю</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 5 -->
+        <div class="question">
+            <h3>5. Что нужно сделать первокурснику для выбора общежития?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q5" id="q5a" value="a">
+                    <label for="q5a">Позвонить в деканат</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" id="q5b" value="b">
+                    <label for="q5b">Найти себя в списке на заселение и подтвердить данные в личном кабинете</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" id="q5c" value="c">
+                    <label for="q5c">Написать заявление в ЖБУ</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" id="q5d" value="d">
+                    <label for="q5d">Приехать без предупреждения в день заселения</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 6 -->
+        <div class="question">
+            <h3>6. В какое время необходимо прибыть на заселение?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q6" id="q6a" value="a">
+                    <label for="q6a">С 8:00 до 10:00</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" id="q6b" value="b">
+                    <label for="q6b">С 10:00 до 17:00</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" id="q6c" value="c">
+                    <label for="q6c">С 9:00 до 18:00</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" id="q6d" value="d">
+                    <label for="q6d">В любое время дня</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 7 -->
+        <div class="question">
+            <h3>7. Какой документ НЕ нужен для заселения в общежитие?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q7" id="q7a" value="a">
+                    <label for="q7a">Паспорт с регистрацией</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" id="q7b" value="b">
+                    <label for="q7b">Медицинская справка 086/у</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" id="q7c" value="c">
+                    <label for="q7c">Справка о доходах родителей</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" id="q7d" value="d">
+                    <label for="q7d">Копия СНИЛС</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 8 -->
+        <div class="question">
+            <h3>8. Что дополнительно требуется от студентов младше 18 лет?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q8" id="q8a" value="a">
+                    <label for="q8a">Письменное разрешение от родителей</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" id="q8b" value="b">
+                    <label for="q8b">Справка из школы</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" id="q8c" value="c">
+                    <label for="q8c">Договор аренды</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" id="q8d" value="d">
+                    <label for="q8d">Заявление от куратора группы</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 9 -->
+        <div class="question">
+            <h3>9. Могут ли студенты из Ленинградской области заселиться в общежитие?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q9" id="q9a" value="a">
+                    <label for="q9a">Нет, им общежитие не предоставляется</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" id="q9b" value="b">
+                    <label for="q9b">Да, но только на платной основе</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" id="q9c" value="c">
+                    <label for="q9c">Да, но вопрос решается индивидуально</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" id="q9d" value="d">
+                    <label for="q9d">Только если они учатся на бюджете</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 10 -->
+        <div class="question">
+            <h3>10. Можно ли поменять общежитие после заселения?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q10" id="q10a" value="a">
+                    <label for="q10a">Нет, это запрещено</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q10" id="q10b" value="b">
+                    <label for="q10b">Да, но не рекомендуется</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q10" id="q10c" value="c">
+                    <label for="q10c">Только после первого курса</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q10" id="q10d" value="d">
+                    <label for="q10d">Только по решению деканата</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 11 -->
+        <div class="question">
+            <h3>11. Какой документ нужен иностранным студентам для заселения?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q11" id="q11a" value="a">
+                    <label for="q11a">Нотариально заверенный перевод паспорта</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q11" id="q11b" value="b">
+                    <label for="q11b">Виза с разрешением на работу</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q11" id="q11c" value="c">
+                    <label for="q11c">Справка о доходах</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q11" id="q11d" value="d">
+                    <label for="q11d">Документ о собственности на жилье</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 12 -->
+        <div class="question">
+            <h3>12. В какой срок иностранный студент должен перерегистрироваться при переезде?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q12" id="q12a" value="a">
+                    <label for="q12a">3 дня</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q12" id="q12b" value="b">
+                    <label for="q12b">7 рабочих дней</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q12" id="q12c" value="c">
+                    <label for="q12c">1 месяц</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q12" id="q12d" value="d">
+                    <label for="q12d">До конца семестра</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 13 -->
+        <div class="question">
+            <h3>13. Можно ли заселиться в общежитие в середине семестра?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q13" id="q13a" value="a">
+                    <label for="q13a">Нет, только в начале учебного года</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q13" id="q13b" value="b">
+                    <label for="q13b">Да, но вопрос решается индивидуально</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q13" id="q13c" value="c">
+                    <label for="q13c">Только по решению ректората</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q13" id="q13d" value="d">
+                    <label for="q13d">Только если есть свободные места</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 14 -->
+        <div class="question">
+            <h3>14. Могут ли иностранного студента выселить из общежития за нарушение правил?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q14" id="q14a" value="a">
+                    <label for="q14a">Да, в любом случае</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q14" id="q14b" value="b">
+                    <label for="q14b">Нет, это запрещено</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q14" id="q14c" value="c">
+                    <label for="q14c">Только по решению суда</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q14" id="q14d" value="d">
+                    <label for="q14d">Только если он не оплатил проживание</label>
+                </div>
+            </div>
+        </div>
+        
+        <button type="submit" class="submit-btn">Завершить тест</button>
+    </form>
+    
+    <div id="results" class="results"></div>
+    
+    <a href="index.html" class="home-btn">На главную</a>
+    
+    <script>
+        // Правильные ответы
+        const correctAnswers = {
+            q1: "c",
+            q2: "c",
+            q3: "a",
+            q4: "c",
+            q5: "b",
+            q6: "b",
+            q7: "c",
+            q8: "a",
+            q9: "c",
+            q10: "b",
+            q11: "a",
+            q12: "b",
+            q13: "b",
+            q14: "b"
+        };
+        
+        // Секундомер
+        let seconds = 0;
+        const timerElement = document.getElementById('timer');
+        
+        function updateTimer() {
+            seconds++;
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        const timerInterval = setInterval(updateTimer, 1000);
+        
+        // Обработка отправки формы
+        document.getElementById('quiz-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitQuiz();
+        });
+        
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            
+            // Скрыть форму
+            document.getElementById('quiz-form').style.display = 'none';
+            
+            // Показать результаты
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.style.display = 'block';
+            
+            // Проверить ответы
+            let wrongAnswers = [];
+            
+            // Проверка радио-кнопок
+            for (let i = 1; i <= 14; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                
+                if (!selectedOption) {
+                    wrongAnswers.push({
+                        question: i,
+                        userAnswer: "Нет ответа",
+                        correctAnswer: getAnswerText(questionName, correctAnswers[questionName])
+                    });
+                } else if (selectedOption.value !== correctAnswers[questionName]) {
+                    wrongAnswers.push({
+                        question: i,
+                        userAnswer: getAnswerText(questionName, selectedOption.value),
+                        correctAnswer: getAnswerText(questionName, correctAnswers[questionName])
+                    });
+                }
+            }
+            
+            // Отобразить результаты
+            if (wrongAnswers.length === 0) {
+                resultsDiv.innerHTML = "<h3>Поздравляем! Все ответы правильные!</h3>";
+            } else {
+                let resultsHTML = "<h3>Ошибки в следующих вопросах:</h3>";
+                
+                wrongAnswers.forEach(item => {
+                    resultsHTML += `
+                        <div class="wrong-answer">
+                            <h4>Вопрос ${item.question}</h4>
+                            <p>Ваш ответ: ${item.userAnswer}</p>
+                            <p class="correct-answer">Правильный ответ: ${item.correctAnswer}</p>
+                        </div>
+                    `;
+                });
+                
+                resultsDiv.innerHTML = resultsHTML;
+            }
+        }
+        
+        function getAnswerText(questionName, value) {
+            const questionDiv = document.querySelector(`input[name="${questionName}"][value="${value}"]`).closest('.question');
+            const label = questionDiv.querySelector(`label[for="${questionName}${value}"]`);
+            return label ? label.textContent.trim() : value;
+        }
+    </script>
+</body>
+</html>

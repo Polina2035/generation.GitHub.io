@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поколение К - Тест по активизму</title>
+    <style>
+        body {
+            background-image: url('1-3.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #ECE9E4;
+            color: #952926;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header-container {
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+        .header h2 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .timer-container {
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .timer {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .question {
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .question h3 {
+            margin-top: 0;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .option label {
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            flex-grow: 1;
+        }
+        .option label:hover {
+            background-color: #952926;
+            color: #ECE9E4;
+        }
+        .submit-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: #952926;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #7a1f1c;
+        }
+        .home-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: #952926;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .home-btn:hover {
+            background-color: #7a1f1c;
+        }
+        .results {
+            display: none;
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .wrong-answer {
+            color: #d32f2f;
+            margin-bottom: 15px;
+        }
+        .correct-answer {
+            color: #388e3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="header">
+            <h1>Поколение К</h1>
+            <h2>Тест по активизму</h2>
+        </div>
+    </div>
+    
+    <div class="timer-container">
+        <div class="timer" id="timer">00:00</div>
+    </div>
+    <form id="quiz-form">        <!-- Вопрос 1 -->
+        <div class="question">
+            <h3>1. Каких возможности нет у активистов?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q1" id="q1a" value="a">
+                    <label for="q1a">a) Легально прогуливать несколько пар в семестр</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" id="q1b" value="b">
+                    <label for="q1b">b) Пгас</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" id="q1c" value="c">
+                    <label for="q1c">c) Подаваться на зимнюю и летнюю оздоровительную кампанию</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" id="q1d" value="d">
+                    <label for="q1d">d) Грантовые возможности при поддержке администрации</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 2 -->
+        <div class="question">
+            <h3>2. Соня всегда мечтала организовывать крупные мероприятия и выступать на сцене, но не знает, где может это попробовать. Какую организацию ты ей посоветуешь?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q2" id="q2a" value="a">
+                    <label for="q2a">a) OpenMedia</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" id="q2b" value="b">
+                    <label for="q2b">b) ЦОММ</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" id="q2c" value="c">
+                    <label for="q2c">c) Estiem</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" id="q2d" value="d">
+                    <label for="q2d">d) ВПЦ</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 3 -->
+        <div class="question">
+            <h3>3. Вова очень любит свою страну, любит ходить на патриотические акции и помогать. Какая организация ему подойдет?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q3" id="q3a" value="a">
+                    <label for="q3a">a) ЦОММ</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" id="q3b" value="b">
+                    <label for="q3b">b) ЦВС</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" id="q3c" value="c">
+                    <label for="q3c">c) ВПЦ</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" id="q3d" value="d">
+                    <label for="q3d">d) МЭК</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 4 -->
+        <div class="question">
+            <h3>4. Ангелина интересуется экономикой и хочет продвигать её в массы, чтобы большее количество людей ею заинтересовалось? В какую организацию ей стоит вступить?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q4" id="q4a" value="a">
+                    <label for="q4a">a) ССК "Стальные Грифоны"</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" id="q4b" value="b">
+                    <label for="q4b">b) OpenMedia</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" id="q4c" value="c">
+                    <label for="q4c">c) МЭК</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" id="q4d" value="d">
+                    <label for="q4d">d) СКО</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 5 -->
+        <div class="question">
+            <h3>5. Твой первокурсник хорошо знает высшую математику и хочет её преподавать. Какая организация ему подойдет?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q5" id="q5a" value="a">
+                    <label for="q5a">a) Estiem</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" id="q5b" value="b">
+                    <label for="q5b">b) OpenMedia</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" id="q5c" value="c">
+                    <label for="q5c">c) СНО</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" id="q5d" value="d">
+                    <label for="q5d">d) СКО</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 6 -->
+        <div class="question">
+            <h3>6. Маша увлекается фотографией и очень хорошо пишет посты, так как у неё есть свой блог в инстаграмме, но она хочет развиваться в этой сфере дальше. Какую организацию ты ей посоветуешь?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q6" id="q6a" value="a">
+                    <label for="q6a">a) ССК "Стальные Грифоны"</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" id="q6b" value="b">
+                    <label for="q6b">b) OpenMedia</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" id="q6c" value="c">
+                    <label for="q6c">c) СНО</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" id="q6d" value="d">
+                    <label for="q6d">d) Клуб развития киберспорта</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 7 -->
+        <div class="question">
+            <h3>7. Дима увлекается киберспортом и хочет выступать на турнирах в команде, которой у него ещё нет. Куда ему можно пойти?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q7" id="q7a" value="a">
+                    <label for="q7a">a) ССК "Стальные Грифоны"</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" id="q7b" value="b">
+                    <label for="q7b">b) OpenMedia</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" id="q7c" value="c">
+                    <label for="q7c">c) СНО</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" id="q7d" value="d">
+                    <label for="q7d">d) Клуб развития киберспорта</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 8 -->
+        <div class="question">
+            <h3>8. Твой первокурсник увлекается культурой Китая, изучает китайский язык и хочет продвигать китайскую культуру в массы. Какая организация ему подойдёт?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q8" id="q8a" value="a">
+                    <label for="q8a">a) ССК "Стальные Грифоны"</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" id="q8b" value="b">
+                    <label for="q8b">b) ЦОММ</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" id="q8c" value="c">
+                    <label for="q8c">c) СС Факультета</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" id="q8d" value="d">
+                    <label for="q8d">d) Российско-китайский клуб</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 9 -->
+        <div class="question">
+            <h3>9. Лера хочет быть проводником пассажирских вагонов, на ярмарке организаций она узнала, что есть Штаб Студенческих отрядов, и там она может осуществить своё желание, но не помнит какой отряд ей подойдет. Что ты ей посоветуешь?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q9" id="q9a" value="a">
+                    <label for="q9a">a) Студенческий отряд "Аквилон"</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" id="q9b" value="b">
+                    <label for="q9b">b) Студенческий отряд "Северный ветер"</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" id="q9c" value="c">
+                    <label for="q9c">c) Студенческий отряд "Скиф"</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" id="q9d" value="d">
+                    <label for="q9d">d) Студенческий отряд "Линия жизни"</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 10 -->
+        <div class="question checkbox-question">
+            <h3>10. Отметь организации, которые не входят в СО</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="checkbox" name="q10" id="q10a" value="a">
+                    <label for="q10a">a) ЦОММ</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q10" id="q10b" value="b">
+                    <label for="q10b">b) Профком</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q10" id="q10c" value="c">
+                    <label for="q10c">c) СКО</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q10" id="q10d" value="d">
+                    <label for="q10d">d) OpenMedia</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q10" id="q10e" value="e">
+                    <label for="q10e">e) Новый формат</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q10" id="q10f" value="f">
+                    <label for="q10f">f) Эм-центр</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q10" id="q10g" value="g">
+                    <label for="q10g">g) ШСО</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q10" id="q10h" value="h">
+                    <label for="q10h">h) СтудКлуб</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 11 -->
+        <div class="question">
+            <h3>11. Никита любит выступать на сцене, играет на гитаре и любит актерское мастерство. Какую организацию ты ему посоветуешь?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q11" id="q11a" value="a">
+                    <label for="q11a">a) ССК "Стальные Грифоны"</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q11" id="q11b" value="b">
+                    <label for="q11b">b) ВПЦ</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q11" id="q11c" value="c">
+                    <label for="q11c">c) СтудКлуб</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q11" id="q11d" value="d">
+                    <label for="q11d">d) Российско-китайский клуб</label>
+                </div>
+            </div>
+        </div>
+        
+ 
+        <button type="submit" class="submit-btn">Завершить тест</button>
+    </form>
+    
+    <div id="results" class="results"></div>
+    
+    <!-- Добавленная кнопка "На главную" -->
+    <a href="index.html" class="home-btn">На главную</a>
+    
+    <script>
+        // Правильные ответы
+        const correctAnswers = {
+            q1: "a",
+            q2: "b",
+            q3: "c",
+            q4: "c",
+            q5: "d",
+            q6: "b",
+            q7: "a",
+            q8: "d",
+            q9: "d",
+            q10: ["a", "b", "d", "e", "f", "h"],
+            q11: "c"
+        };
+        
+        // Секундомер
+        let seconds = 0;
+        const timerElement = document.getElementById('timer');
+        
+        function updateTimer() {
+            seconds++;
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        const timerInterval = setInterval(updateTimer, 1000);
+        
+        // Обработка отправки формы
+        document.getElementById('quiz-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitQuiz();
+        });
+        
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            
+            // Скрыть форму
+            document.getElementById('quiz-form').style.display = 'none';
+            
+            // Показать результаты
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.style.display = 'block';
+            
+            // Проверить ответы
+            let wrongAnswers = [];
+            
+            // Проверка радио-кнопок (вопросы 1-9, 11)
+            for (let i = 1; i <= 11; i++) {
+                if (i === 10) continue;
+                
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                
+                if (!selectedOption) {
+                    wrongAnswers.push({
+                        question: i,
+                        userAnswer: "Нет ответа",
+                        correctAnswer: getAnswerText(questionName, correctAnswers[questionName])
+                    });
+                } else if (selectedOption.value !== correctAnswers[questionName]) {
+                    wrongAnswers.push({
+                        question: i,
+                        userAnswer: getAnswerText(questionName, selectedOption.value),
+                        correctAnswer: getAnswerText(questionName, correctAnswers[questionName])
+                    });
+                }
+            }
+            
+            // Проверка чекбоксов (вопрос 10)
+            const checkboxes = document.querySelectorAll('input[name="q10"]:checked');
+            const selectedValues = Array.from(checkboxes).map(cb => cb.value);
+            
+            const correctQ10 = correctAnswers.q10;
+            const isCorrect = selectedValues.length === correctQ10.length && 
+                              selectedValues.every(val => correctQ10.includes(val));
+            
+            if (!isCorrect) {
+                const correctLabels = correctQ10.map(val => getAnswerText("q10", val)).join(", ");
+                const userLabels = selectedValues.map(val => getAnswerText("q10", val)).join(", ") || "Нет ответа";
+                
+                wrongAnswers.push({
+                    question: 10,
+                    userAnswer: userLabels,
+                    correctAnswer: correctLabels
+                });
+            }
+            
+            // Отобразить результаты
+            if (wrongAnswers.length === 0) {
+                resultsDiv.innerHTML = "<h3>Поздравляем! Все ответы правильные!</h3>";
+            } else {
+                let resultsHTML = "<h3>Ошибки в следующих вопросах:</h3>";
+                
+                wrongAnswers.forEach(item => {
+                    resultsHTML += `
+                        <div class="wrong-answer">
+                            <h4>Вопрос ${item.question}</h4>
+                            <p>Ваш ответ: ${item.userAnswer}</p>
+                            <p class="correct-answer">Правильный ответ: ${item.correctAnswer}</p>
+                        </div>
+                    `;
+                });
+                
+                resultsDiv.innerHTML = resultsHTML;
+            }
+        }
+        
+        function getAnswerText(questionName, value) {
+            const questionDiv = document.querySelector(`input[name="${questionName}"][value="${value}"]`).closest('.question');
+            const label = questionDiv.querySelector(`label[for="${questionName}${value}"]`);
+            return label ? label.textContent.trim() : value;
+        }
+    </script>
+</body>
+</html>
