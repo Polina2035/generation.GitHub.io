@@ -6,9 +6,9 @@
     <title>Поколение К</title>
     <style>
         body {
-            background-image: url('1-3.png'); /* Установка фонового изображения */
-            background-size: cover; /* Масштабирование изображения, чтобы оно заполнило весь фон */
-            background-position: center; /* Центрирование изображения */
+            background-image: url('1-3.png');
+            background-size: cover;
+            background-position: center;
             background-repeat: no-repeat;
             background-color: #ECE9E4;
             color: #952926;
@@ -23,10 +23,12 @@
         .header h1 {
             font-size: 36px;
             margin-bottom: 10px;
-        }
-        .header h1 a {
-            color: #952926;
-            text-decoration: none;
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #f8f5f0;
+            border: 2px solid #952926;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .themes-container {
             display: grid;
@@ -43,6 +45,7 @@
             transition: all 0.3s ease;
             text-align: center;
             cursor: pointer;
+            border: 2px solid #952926;
         }
         .theme-card:hover {
             transform: translateY(-5px);
@@ -63,7 +66,7 @@
 </head>
 <body>
     <div class="header">
-        <h1><a href="main.html">Поколение К</a></h1>
+        <h1>Поколение К</h1>
     </div>
     
     <div class="themes-container">
@@ -122,7 +125,6 @@
                 <h2>Военное обучение</h2>
             </a>
         </div>
-
         <div class="theme-card">
             <a href="activism.html">
                 <h2>Активизм</h2>
