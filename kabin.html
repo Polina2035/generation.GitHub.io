@@ -380,7 +380,7 @@
         </div>
         
         <button type="submit" class="submit-btn">Завершить тест</button>
-    </form>
+ </form>
     
     <div id="results" class="results"></div>
     
@@ -398,7 +398,7 @@
             q7: "b",
             q8: "c",
             q9: "a",
-            q10: "с"
+            q10: "c"
         };
         
         // Секундомер
@@ -431,23 +431,32 @@
             const resultsDiv = document.getElementById('results');
             resultsDiv.style.display = 'block';
             
+            // Получить все вопросы
+            const questions = document.querySelectorAll('.question h3');
+            
             // Проверить ответы
             let wrongAnswers = [];
+            let score = 0;
             
-            // Проверка радио-кнопок
+            // Проверка всех вопросов
             for (let i = 1; i <= 10; i++) {
                 const questionName = `q${i}`;
                 const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                const questionText = questions[i-1].textContent;
                 
                 if (!selectedOption) {
                     wrongAnswers.push({
                         question: i,
+                        questionText: questionText,
                         userAnswer: "Нет ответа",
                         correctAnswer: getAnswerText(questionName, correctAnswers[questionName])
                     });
-                } else if (selectedOption.value !== correctAnswers[questionName]) {
+                } else if (selectedOption.value === correctAnswers[questionName]) {
+                    score++;
+                } else {
                     wrongAnswers.push({
                         question: i,
+                        questionText: questionText,
                         userAnswer: getAnswerText(questionName, selectedOption.value),
                         correctAnswer: getAnswerText(questionName, correctAnswers[questionName])
                     });
@@ -455,15 +464,24 @@
             }
             
             // Отобразить результаты
+            const percentage = Math.round((score / 10) * 100);
+            
             if (wrongAnswers.length === 0) {
-                resultsDiv.innerHTML = "<h3>Поздравляем! Все ответы правильные!</h3>";
+                resultsDiv.innerHTML = `
+                    <h3>Поздравляем! Все ответы правильные!</h3>
+                    <p>Ваш результат: 10/10 (100%)</p>
+                `;
             } else {
-                let resultsHTML = "<h3>Ошибки в следующих вопросах:</h3>";
+                let resultsHTML = `
+                    <h3>Результаты теста</h3>
+                    <p>Правильных ответов: ${score} из 10 (${percentage}%)</p>
+                    <h4>Ошибки в следующих вопросах:</h4>
+                `;
                 
                 wrongAnswers.forEach(item => {
                     resultsHTML += `
                         <div class="wrong-answer">
-                            <h4>Вопрос ${item.question}</h4>
+                            <h4>Вопрос ${item.question}: ${item.questionText}</h4>
                             <p>Ваш ответ: ${item.userAnswer}</p>
                             <p class="correct-answer">Правильный ответ: ${item.correctAnswer}</p>
                         </div>
@@ -475,8 +493,7 @@
         }
         
         function getAnswerText(questionName, value) {
-            const questionDiv = document.querySelector(`input[name="${questionName}"][value="${value}"]`).closest('.question');
-            const label = questionDiv.querySelector(`label[for="${questionName}${value}"]`);
+            const label = document.querySelector(`label[for="${questionName}${value}"]`);
             return label ? label.textContent.trim() : value;
         }
     </script>
