@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поколение К - Тест по образовательному блоку</title>
+    <style>
+        body {
+            background-image: url('1-3.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #ECE9E4;
+            color: #952926;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header-container {
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+        .header h2 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .timer-container {
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .timer {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .question {
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .question h3 {
+            margin-top: 0;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .option label {
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            flex-grow: 1;
+        }
+        .option label:hover {
+            background-color: #952926;
+            color: #ECE9E4;
+        }
+        .submit-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: #952926;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #7a1f1c;
+        }
+        .home-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: #952926;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .home-btn:hover {
+            background-color: #7a1f1c;
+        }
+        .results {
+            display: none;
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .wrong-answer {
+            color: #d32f2f;
+            margin-bottom: 15px;
+        }
+        .correct-answer {
+            color: #388e3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="header">
+            <h1>Поколение К</h1>
+            <h2>Тест по образовательному блоку</h2>
+        </div>
+    </div>
+    
+    <div class="timer-container">
+        <div class="timer" id="timer">00:00</div>
+    </div>
+    <form id="quiz-form">
+        <!-- Вопрос 1 -->
+        <div class="question">
+            <h3>1. Что такое промежуточная аттестация?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q1" id="q1a" value="a">
+                    <label for="q1a">Оценивание промежуточных и окончательных результатов обучения по дисциплинам (модулям),прохождения практик (в том числе результатов курсового проектирования (выполнения курсовых работ)) и осуществления этапов научной (научно-исследовательской) деятельности по окончанию семестра (периода освоения модуля)</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" id="q1b" value="b">
+                    <label for="q1b">Оценивание хода освоения дисциплин (модулей),прохождения практической подготовки и этапов проведения научных исследований в течение семестра (периода освоения модуля) и в соответствии с индивидуальным планом научной деятельности и индивидуальным учебным планом</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" id="q1c" value="c">
+                    <label for="q1c">Нет правильного варианта ответа</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 2 -->
+        <div class="question">
+            <h3>2. Что такое текущий контроль?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q2" id="q2a" value="a">
+                    <label for="q2a">Оценивание промежуточных и окончательных результатов обучения по дисциплинам (модулям),прохождения практик (в том числе результатов курсового проектирования (выполнения курсовых работ)) и осуществления этапов научной (научно-исследовательской) деятельности по окончанию семестра (периода освоения модуля)</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" id="q2b" value="b">
+                    <label for="q2b">Оценивание хода освоения дисциплин (модулей),прохождения практической подготовки и этапов проведения научных исследований в течение семестра (периода освоения модуля) и в соответствии с индивидуальным планом научной деятельности и индивидуальным учебным планом</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" id="q2c" value="c">
+                    <label for="q2c">Нет правильного ответа</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 3 -->
+        <div class="question">
+            <h3>3. Не реже скольки раз в неделю должен проводиться учет и контроль посещаемости</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q3" id="q3a" value="a">
+                    <label for="q3a">Не реже 1 раза в неделю</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" id="q3b" value="b">
+                    <label for="q3b">Не реже 2 раз в неделю</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" id="q3c" value="c">
+                    <label for="q3c">Количество не установлено</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 4 -->
+        <div class="question checkbox-question">
+            <h3>4. В каких формах проводится промежуточная аттестация?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="checkbox" name="q4" id="q4a" value="a">
+                    <label for="q4a">Экзамен</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q4" id="q4b" value="b">
+                    <label for="q4b">Контрольные точки</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q4" id="q4c" value="c">
+                    <label for="q4c">Курсовая работа</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 5 -->
+        <div class="question">
+            <h3>5. Каким условием отличается ГАС отличается от ГАС+?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q5" id="q5a" value="a">
+                    <label for="q5a">ГАС+ могут получать студенты контрактной и бюджетной формы обучения, а ГАС только бюджетники</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" id="q5b" value="b">
+                    <label for="q5b">Что бы получить ГАС+ нужно учиться только на отлично, а ГАС можно получать и с оценками хорошо и отлично</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" id="q5c" value="c">
+                    <label for="q5c">ГАС+ могут получать и заочники</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 6 -->
+        <div class="question">
+            <h3>6. Если во время зимней сессии студент получил оценку "удовлетворительно", будет ли ему начислена стипендия за январь?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q6" id="q6a" value="a">
+                    <label for="q6a">да</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" id="q6b" value="b">
+                    <label for="q6b">нет</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 7 -->
+        <div class="question">
+            <h3>7. Какую стипендию могут получать студенты на контрактной форме обучения?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q7" id="q7a" value="a">
+                    <label for="q7a">Стипендии президента РФ и Правительства РФ</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" id="q7b" value="b">
+                    <label for="q7b">ПГАС</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" id="q7c" value="c">
+                    <label for="q7c">Именные стипендии и стипендии физ лиц</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 8 -->
+        <div class="question checkbox-question">
+            <h3>8. Студенты каких курсов могут получать социальную стипендию в повышенном размере (при соблюдении прочих условий)?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="checkbox" name="q8" id="q8a" value="a">
+                    <label for="q8a">1 курс</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q8" id="q8b" value="b">
+                    <label for="q8b">2 курс</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q8" id="q8c" value="c">
+                    <label for="q8c">3 курс</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q8" id="q8d" value="d">
+                    <label for="q8d">4 курс</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q8" id="q8e" value="e">
+                    <label for="q8e">5 курс</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 9 -->
+        <div class="question checkbox-question">
+            <h3>9. Выбери условия получения ПГАС</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="checkbox" name="q9" id="q9a" value="a">
+                    <label for="q9a">Бюджетная основа обучения</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q9" id="q9b" value="b">
+                    <label for="q9b">Контрактная форма обучения</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q9" id="q9c" value="c">
+                    <label for="q9c">Принадлежность к льготным категориям</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q9" id="q9d" value="d">
+                    <label for="q9d">Отсутствие дисциплинарных взысканий</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q9" id="q9e" value="e">
+                    <label for="q9e">Наличие оценок хорошо и отлично</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 10 -->
+        <div class="question checkbox-question">
+            <h3>10. Какие фонды материальной поддержки существуют</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="checkbox" name="q10" id="q10a" value="a">
+                    <label for="q10a">Университетский фонд</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q10" id="q10b" value="b">
+                    <label for="q10b">Бюджетный фонд</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q10" id="q10c" value="c">
+                    <label for="q10c">Внебюджетный фонд</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q10" id="q10d" value="d">
+                    <label for="q10d">Денежный фонд</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 11 -->
+        <div class="question">
+            <h3>11. Если студент получил на сессии оценку удоволетворительно, может ли он претендовать на материальную поддержку?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q11" id="q11a" value="a">
+                    <label for="q11a">Да</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q11" id="q11b" value="b">
+                    <label for="q11b">Нет</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q11" id="q11c" value="c">
+                    <label for="q11c">На усмотрение деканата</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 12 -->
+        <div class="question">
+            <h3>12. С какого семестра можно перевестись на бюджет?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q12" id="q12a" value="a">
+                    <label for="q12a">С 1 семестра 1 курса</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q12" id="q12b" value="b">
+                    <label for="q12b">Со 2 семестра 1 курса</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q12" id="q12c" value="c">
+                    <label for="q12c">С 1 семестра 2 курса</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 13 -->
+        <div class="question checkbox-question">
+            <h3>13. Какие условия перевода на бюджет существуют</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="checkbox" name="q13" id="q13a" value="a">
+                    <label for="q13a">Отсутствие академ задолженности</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q13" id="q13b" value="b">
+                    <label for="q13b">членство в СС факультета</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q13" id="q13c" value="c">
+                    <label for="q13c">отсутствие долгов за оплату обучения</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q13" id="q13d" value="d">
+                    <label for="q13d">отсутствие долгов за оплату общежития</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q13" id="q13e" value="e">
+                    <label for="q13e">наличие вакантного места</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q13" id="q13f" value="f">
+                    <label for="q13f">наличие достижений в научной или общественной деятельности</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q13" id="q13g" value="g">
+                    <label for="q13g">отсутствие дисциплинарных взысканий</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" name="q13" id="q13h" value="h">
+                    <label for="q13h">Одна предыдущая сессия сдана на отлично или хорошо</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 14 -->
+        <div class="question">
+            <h3>14. Сколько раз можно брать академ отпуск</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q14" id="q14a" value="a">
+                    <label for="q14a">1 раз</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q14" id="q14b" value="b">
+                    <label for="q14b">2 раза</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q14" id="q14c" value="c">
+                    <label for="q14c">3 раза</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q14" id="q14d" value="d">
+                    <label for="q14d">Неограниченное количество раз</label>
+                </div>
+            </div>
+        </div>
+        
+        <button type="submit" class="submit-btn">Завершить тест</button>
+    </form>
+    
+    <div id="results" class="results"></div>
+    
+    <!-- Добавленная кнопка "На главную" -->
+    <a href="index.html" class="home-btn">На главную</a>
+    
+    <script>
+        // Правильные ответы
+        const correctAnswers = {
+            q1: "a",
+            q2: "b",
+            q3: "b",
+            q4: ["a", "c"],
+            q5: "b",
+            q6: "a",
+            q7: "c",
+            q8: ["a", "b"],
+            q9: ["a", "d", "e"],
+            q10: ["b", "c"],
+            q11: "a",
+            q12: "b",
+            q13: ["a", "c", "e", "g", "h"],
+            q14: "d"
+        };
+        
+        // Секундомер
+        let seconds = 0;
+        const timerElement = document.getElementById('timer');
+        
+        function updateTimer() {
+            seconds++;
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        const timerInterval = setInterval(updateTimer, 1000);
+        
+        // Обработка отправки формы
+        document.getElementById('quiz-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitQuiz();
+        });
+        
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            
+            // Скрыть форму
+            document.getElementById('quiz-form').style.display = 'none';
+            
+            // Показать результаты
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.style.display = 'block';
+            
+            // Проверить ответы
+            let wrongAnswers = [];
+            
+            // Проверка радио-кнопок (вопросы 1-3, 5-7, 11-12, 14)
+            for (let i = 1; i <= 14; i++) {
+                if ([4, 8, 9, 10, 13].includes(i)) continue;
+                
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                
+                if (!selectedOption) {
+                    wrongAnswers.push({
+                        question: i,
+                        userAnswer: "Нет ответа",
+                        correctAnswer: getAnswerText(questionName, correctAnswers[questionName])
+                    });
+                } else if (selectedOption.value !== correctAnswers[questionName]) {
+                    wrongAnswers.push({
+                        question: i,
+                        userAnswer: getAnswerText(questionName, selectedOption.value),
+                        correctAnswer: getAnswerText(questionName, correctAnswers[questionName])
+                    });
+                }
+            }
+            
+            // Проверка чекбоксов (вопросы 4, 8-10, 13)
+            const checkboxQuestions = [4, 8, 9, 10, 13];
+            checkboxQuestions.forEach(qNum => {
+                const questionName = `q${qNum}`;
+                const checkboxes = document.querySelectorAll(`input[name="${questionName}"]:checked`);
+                const selectedValues = Array.from(checkboxes).map(cb => cb.value);
+                
+                const correctQ = correctAnswers[questionName];
+                const isCorrect = selectedValues.length === correctQ.length && 
+                                  selectedValues.every(val => correctQ.includes(val));
+                
+                if (!isCorrect) {
+                    const correctLabels = correctQ.map(val => getAnswerText(questionName, val)).join(", ");
+                    const userLabels = selectedValues.map(val => getAnswerText(questionName, val)).join(", ") || "Нет ответа";
+                    
+                    wrongAnswers.push({
+                        question: qNum,
+                        userAnswer: userLabels,
+                        correctAnswer: correctLabels
+                    });
+                }
+            });
+            
+            // Отобразить результаты
+            if (wrongAnswers.length === 0) {
+                resultsDiv.innerHTML = "<h3>Поздравляем! Все ответы правильные!</h3>";
+            } else {
+                let resultsHTML = "<h3>Ошибки в следующих вопросах:</h3>";
+                
+                wrongAnswers.forEach(item => {
+                    resultsHTML += `
+                        <div class="wrong-answer">
+                            <h4>Вопрос ${item.question}</h4>
+                            <p>Ваш ответ: ${item.userAnswer}</p>
+                            <p class="correct-answer">Правильный ответ: ${item.correctAnswer}</p>
+                        </div>
+                    `;
+                });
+                
+                resultsDiv.innerHTML = resultsHTML;
+            }
+        }
+        
+        function getAnswerText(questionName, value) {
+            const questionDiv = document.querySelector(`input[name="${questionName}"][value="${value}"]`).closest('.question');
+            const label = questionDiv.querySelector(`label[for="${questionName}${value}"]`);
+            return label ? label.textContent.trim() : value;
+        }
+    </script>
+</body>
+</html>

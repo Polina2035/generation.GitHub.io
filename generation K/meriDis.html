@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поколение К - Тест по мерам дисциплинарного взыскания</title>
+    <style>
+        body {
+            background-image: url('1-3.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #ECE9E4;
+            color: #952926;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header-container {
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+        .header h2 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .timer-container {
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .timer {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .question {
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .question h3 {
+            margin-top: 0;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .option label {
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            flex-grow: 1;
+        }
+        .option label:hover {
+            background-color: #952926;
+            color: #ECE9E4;
+        }
+        .submit-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: #952926;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #7a1f1c;
+        }
+        .home-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: #952926;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .home-btn:hover {
+            background-color: #7a1f1c;
+        }
+        .results {
+            display: none;
+            background-color: #f8f5f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .wrong-answer {
+            color: #d32f2f;
+            margin-bottom: 15px;
+        }
+        .correct-answer {
+            color: #388e3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="header">
+            <h1>Поколение К</h1>
+            <h2>Тест по мерам дисциплинарного взыскания</h2>
+        </div>
+    </div>
+    
+    <div class="timer-container">
+        <div class="timer" id="timer">00:00</div>
+    </div>
+    <form id="quiz-form">
+        <!-- Вопрос 1 -->
+        <div class="question">
+            <h3>1. Какое из перечисленных действий НЕ является нарушением дисциплины в университете?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q1" id="q1a" value="a">
+                    <label for="q1a">a) Курение на территории кампуса</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" id="q1b" value="b">
+                    <label for="q1b">b) Прием пищи в столовой университета</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" id="q1c" value="c">
+                    <label for="q1c">c) Распитие алкогольных напитков</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q1" id="q1d" value="d">
+                    <label for="q1d">d) Использование ненормативной лексики</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 2 -->
+        <div class="question">
+            <h3>2. Сколько выговоров в течение семестра приводят к отчислению?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q2" id="q2a" value="a">
+                    <label for="q2a">a) 1</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" id="q2b" value="b">
+                    <label for="q2b">b) 2</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" id="q2c" value="c">
+                    <label for="q2c">c) 3</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q2" id="q2d" value="d">
+                    <label for="q2d">d) 4</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 3 -->
+        <div class="question">
+            <h3>3. В какой форме объявляется выговор?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q3" id="q3a" value="a">
+                    <label for="q3a">a) Устное предупреждение</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" id="q3b" value="b">
+                    <label for="q3b">b) Письменный приказ</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" id="q3c" value="c">
+                    <label for="q3c">c) Сообщение в чате группы</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q3" id="q3d" value="d">
+                    <label for="q3d">d) Объявление на доске объявлений</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 4 -->
+        <div class="question">
+            <h3>4. Что должен получить деканат ПЕРЕД объявлением выговора?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q4" id="q4a" value="a">
+                    <label for="q4a">a) Характеристику от куратора</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" id="q4b" value="b">
+                    <label for="q4b">b) Объяснительную от студента</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" id="q4c" value="c">
+                    <label for="q4c">c) Разрешение от ректора</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q4" id="q4d" value="d">
+                    <label for="q4d">d) Заявление от пострадавшей стороны</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 5 -->
+        <div class="question">
+            <h3>5. В какой срок должны применить дисциплинарное взыскание после обнаружения проступка?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q5" id="q5a" value="a">
+                    <label for="q5a">a) Не позднее 3 дней</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" id="q5b" value="b">
+                    <label for="q5b">b) Не позднее 1 месяца</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" id="q5c" value="c">
+                    <label for="q5c">c) В течение семестра</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q5" id="q5d" value="d">
+                    <label for="q5d">d) В течение учебного года</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 6 -->
+        <div class="question">
+            <h3>6. Какое последствие может иметь выговор для студента?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q6" id="q6a" value="a">
+                    <label for="q6a">a) Учитывается при переводе на бюджет</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" id="q6b" value="b">
+                    <label for="q6b">b) Автоматическое отчисление</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" id="q6c" value="c">
+                    <label for="q6c">c) Запрет на посещение библиотеки</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q6" id="q6d" value="d">
+                    <label for="q6d">d) Лишение стипендии на весь период обучения</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 7 -->
+        <div class="question">
+            <h3>7. Какое из перечисленных действий является САМЫМ тяжелым нарушением?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q7" id="q7a" value="a">
+                    <label for="q7a">a) Нахождение в верхней одежде в аудитории</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" id="q7b" value="b">
+                    <label for="q7b">b) Употребление наркотических веществ</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" id="q7c" value="c">
+                    <label for="q7c">c) Использование телефона на лекции</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q7" id="q7d" value="d">
+                    <label for="q7d">d) Игра в карты в холле университета</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 8 -->
+        <div class="question">
+            <h3>8. Можно ли оспорить выговор?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q8" id="q8a" value="a">
+                    <label for="q8a">a) Нет, никогда</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" id="q8b" value="b">
+                    <label for="q8b">b) Да, если ректор согласен и проступок не тяжелый</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" id="q8c" value="c">
+                    <label for="q8c">c) Только в течение 3 дней после вынесения</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q8" id="q8d" value="d">
+                    <label for="q8d">d) Только если есть свидетели невиновности</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 9 -->
+        <div class="question">
+            <h3>9. Какое правило относится скорее к правилам приличия, чем к строгим запретам?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q9" id="q9a" value="a">
+                    <label for="q9a">a) Запрет курения</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" id="q9b" value="b">
+                    <label for="q9b">b) Запрет на еду в учебных аудиториях</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" id="q9c" value="c">
+                    <label for="q9c">c) Запрет распития алкоголя</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q9" id="q9d" value="d">
+                    <label for="q9d">d) Запрет выноса имущества</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вопрос 10 -->
+        <div class="question">
+            <h3>10. Что составляет деканат, если студент отказывается давать объяснительную?</h3>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" name="q10" id="q10a" value="a">
+                    <label for="q10a">a) Протокол нарушения</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q10" id="q10b" value="b">
+                    <label for="q10b">b) Акт об отказе</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q10" id="q10c" value="c">
+                    <label for="q10c">c) Заявление в полицию</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="q10" id="q10d" value="d">
+                    <label for="q10d">d) Ходатайство об отчислении</label>
+                </div>
+            </div>
+        </div>
+         
+        <button type="submit" class="submit-btn">Завершить тест</button>
+    </form>
+    
+    <div id="results" class="results"></div>
+    
+    <a href="index.html" class="home-btn">На главную</a>
+    
+   <script>
+        // Правильные ответы
+        const correctAnswers = {
+            q1: "b",
+            q2: "c",
+            q3: "b",
+            q4: "b",
+            q5: "b",
+            q6: "a",
+            q7: "b",
+            q8: "b",
+            q9: "b",
+            q10: "b"
+        };
+        
+        // Секундомер
+        let seconds = 0;
+        const timerElement = document.getElementById('timer');
+        
+        function updateTimer() {
+            seconds++;
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        const timerInterval = setInterval(updateTimer, 1000);
+        
+        // Обработка отправки формы
+        document.getElementById('quiz-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitQuiz();
+        });
+        
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            
+            // Скрыть форму
+            document.getElementById('quiz-form').style.display = 'none';
+            
+            // Показать результаты
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.style.display = 'block';
+            
+            // Проверить ответы
+            let wrongAnswers = [];
+            
+            // Проверка радио-кнопок
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                
+                if (!selectedOption) {
+                    wrongAnswers.push({
+                        question: i,
+                        userAnswer: "Нет ответа",
+                        correctAnswer: getAnswerText(questionName, correctAnswers[questionName])
+                    });
+                } else if (selectedOption.value !== correctAnswers[questionName]) {
+                    wrongAnswers.push({
+                        question: i,
+                        userAnswer: getAnswerText(questionName, selectedOption.value),
+                        correctAnswer: getAnswerText(questionName, correctAnswers[questionName])
+                    });
+                }
+            }
+            
+            // Отобразить результаты
+            if (wrongAnswers.length === 0) {
+                resultsDiv.innerHTML = "<h3>Поздравляем! Все ответы правильные!</h3>";
+            } else {
+                let resultsHTML = "<h3>Ошибки в следующих вопросах:</h3>";
+                
+                wrongAnswers.forEach(item => {
+                    resultsHTML += `
+                        <div class="wrong-answer">
+                            <h4>Вопрос ${item.question}</h4>
+                            <p>Ваш ответ: ${item.userAnswer}</p>
+                            <p class="correct-answer">Правильный ответ: ${item.correctAnswer}</p>
+                        </div>
+                    `;
+                });
+                
+                resultsDiv.innerHTML = resultsHTML;
+            }
+        }
+        
+        function getAnswerText(questionName, value) {
+            const questionDiv = document.querySelector(`input[name="${questionName}"][value="${value}"]`).closest('.question');
+            const label = questionDiv.querySelector(`label[for="${questionName}${value}"]`);
+            return label ? label.textContent.trim() : value;
+        }
+    </script>
+</body>
+</html>       
+</html>
