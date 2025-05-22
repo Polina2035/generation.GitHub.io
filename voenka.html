@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -127,6 +127,28 @@
             color: #388e3c;
             font-weight: bold;
         }
+        /* Стили для сортируемого списка */
+        .sortable-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sortable-item {
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: move;
+            transition: background-color 0.3s;
+        }
+        .sortable-item:hover {
+            background-color: #f0f0f0;
+        }
+        .sortable-item.dragging {
+            opacity: 0.5;
+            background-color: #e6e6e6;
+        }
     </style>
 </head>
 <body>
@@ -140,23 +162,24 @@
     <div class="timer-container">
         <div class="timer" id="timer">00:00</div>
     </div>
+    
     <form id="quiz-form">
         <!-- Вопрос 1 - Сортировка -->
         <div class="question">
             <h3>1. Поставь в правильном порядке действия, которые нужно сделать, чтобы встать на воинский учет:</h3>
             <ul id="sortable-list" class="sortable-list">
-                <li class="sortable-item" data-value="2">Загрузить документы в ЛК: приписное, паспорт, временная прописка (для иногородних студентов)</li>
-                <li class="sortable-item" data-value="3">Прийти в мобилизационное управление (по факультетам)</li>
-                <li class="sortable-item" data-value="1">Для иногородних студентов: получить ЛИБО временная регистрация, ЛИБО договор об аренде квартиры</li>
-                <li class="sortable-item" data-value="4">Получить справку формы №4</li>
-                <li class="sortable-item" data-value="5">Идем в военкомат со справкой</li>
+                <li class="sortable-item" draggable="true" data-value="2">Загрузить документы в ЛК: приписное, паспорт, временная прописка (для иногородних студентов)</li>
+                <li class="sortable-item" draggable="true" data-value="3">Прийти в мобилизационное управление (по факультетам)</li>
+                <li class="sortable-item" draggable="true" data-value="1">Для иногородних студентов: получить ЛИБО временная регистрация, ЛИБО договор об аренде квартиры</li>
+                <li class="sortable-item" draggable="true" data-value="4">Получить справку формы №4</li>
+                <li class="sortable-item" draggable="true" data-value="5">Идем в военкомат со справкой</li>
             </ul>
             <input type="hidden" id="q1" name="q1" value="">
         </div>
         
         <!-- Вопрос 2 -->
         <div class="question">
-            <h3>2. Где находится мобилизационное управление для ФУ БТБ ФСТИГ ФЭИФ?</h3>
+            <h3>2. Где находится мобилизационное управление для ФУ БТБ ФСТИГ?</h3>
             <div class="options">
                 <div class="option">
                     <input type="radio" name="q2" id="q2a" value="a">
@@ -273,29 +296,38 @@
         const sortableList = document.getElementById('sortable-list');
         let draggedItem = null;
         
-        sortableList.addEventListener('dragstart', function(e) {
-            draggedItem = e.target;
-            e.target.classList.add('dragging');
-            e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('text/html', e.target.innerHTML);
-        });
-        
-        sortableList.addEventListener('dragover', function(e) {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'move';
+        // Инициализация сортируемого списка
+        function initSortableList() {
+            const items = sortableList.querySelectorAll('.sortable-item');
             
-            const afterElement = getDragAfterElement(sortableList, e.clientY);
-            if (afterElement == null) {
-                sortableList.appendChild(draggedItem);
-            } else {
-                sortableList.insertBefore(draggedItem, afterElement);
-            }
-        });
-        
-        sortableList.addEventListener('dragend', function(e) {
-            e.target.classList.remove('dragging');
-            updateSortableInput();
-        });
+            items.forEach(item => {
+                item.setAttribute('draggable', 'true');
+                
+                item.addEventListener('dragstart', function() {
+                    draggedItem = item;
+                    setTimeout(() => {
+                        item.classList.add('dragging');
+                    }, 0);
+                });
+                
+                item.addEventListener('dragend', function() {
+                    item.classList.remove('dragging');
+                    updateSortableInput();
+                });
+            });
+            
+            sortableList.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                const afterElement = getDragAfterElement(sortableList, e.clientY);
+                const currentItem = document.querySelector('.dragging');
+                
+                if (!afterElement) {
+                    sortableList.appendChild(currentItem);
+                } else {
+                    sortableList.insertBefore(currentItem, afterElement);
+                }
+            });
+        }
         
         function getDragAfterElement(container, y) {
             const draggableElements = [...container.querySelectorAll('.sortable-item:not(.dragging)')];
@@ -318,8 +350,11 @@
             document.getElementById('q1').value = values.join(',');
         }
         
-        // Инициализация значения сортировки
-        updateSortableInput();
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            initSortableList();
+            updateSortableInput();
+        });
         
         // Обработка отправки формы
         document.getElementById('quiz-form').addEventListener('submit', function(e) {
